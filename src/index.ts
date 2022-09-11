@@ -1,10 +1,14 @@
-import express, { Express } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import { Server, Socket } from "socket.io";
 import cors from "cors";
 import { CLIENT_HOST, PORT } from "../config/index";
 
 const app: Express = express();
 app.use(cors());
+
+app.get("/", (req: Request, res: Response, next: NextFunction) => {
+  return res.json("Welcome to CoTalk API!");
+});
 
 const server = app.listen(PORT);
 
