@@ -16,9 +16,13 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket: Socket) => {
-  console.log("===== Connected:", socket.id);
+  console.log("===== CONNECTED:", socket.id);
+
+  socket.on("send_message", (data: any) => {
+    socket.broadcast.emit("receive_message", data);
+  });
 
   socket.on("disconnect", () => {
-    console.log(`===== Client ${socket.id} disconnected`);
+    console.log(`===== Client ${socket.id} DISCONNECTED`);
   })
 })
