@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./src/index.ts"
   },
-  "author": "pradanaricoputra@gmail.com",
+  "author": "Rico Putra P (pradanaricoputra@gmail.com)",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
