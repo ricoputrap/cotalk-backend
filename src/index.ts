@@ -22,8 +22,12 @@ const io = new Server(server, {
 io.on("connection", (socket: Socket) => {
   console.log("===== CONNECTED:", socket.id);
 
+  socket.on("join_room", (roomID: string) => {
+    socket.join(roomID);
+  })
+
   socket.on("send_message", (data: any) => {
-    socket.broadcast.emit("receive_message", data);
+    socket.to(data.room).emit("receive_message", data);
   });
 
   socket.on("disconnect", () => {
