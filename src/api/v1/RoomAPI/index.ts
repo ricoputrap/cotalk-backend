@@ -12,7 +12,7 @@ const RoomAPI = (app: Express) => {
     }
     catch (err: any) {
       return res.status(500).json({
-        error: "ERROR"
+        error: err
       })
     }
   });
@@ -25,7 +25,7 @@ const RoomAPI = (app: Express) => {
     }
     catch (err: any) {
       return res.status(500).json({
-        error: "ERROR"
+        error: err
       });
     }
   });
