@@ -3,8 +3,10 @@ import { Server, Socket } from "socket.io";
 import cors from "cors";
 import { CLIENT_HOST, PORT } from "../config/index";
 import expressApp from "./expressApp";
+import SocketClient from "../clients/SocketClient";
 
 const app: Express = express();
+app.use(express.json());
 app.use(cors());
 
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
@@ -25,9 +27,7 @@ const io = new Server(server, {
 io.on("connection", (socket: Socket) => {
   console.log("===== CONNECTED:", socket.id);
 
-  socket.on("join_room", (roomID: string) => {
-    socket.join(roomID);
-  })
+  SocketClient.setInstance(socket);
 
   socket.on("send_message", (data: any) => {
     socket.to(data.room).emit("receive_message", data);
