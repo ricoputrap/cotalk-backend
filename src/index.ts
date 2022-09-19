@@ -30,6 +30,7 @@ io.on("connection", (socket: Socket) => {
   SocketClient.setInstance(socket);
 
   socket.on("join_room", (roomID: string) => {
+    if (socket.rooms.has(roomID)) return;
     socket.join(roomID);
   });
 
