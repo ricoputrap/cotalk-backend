@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
     "fullname" TEXT NOT NULL,
 
@@ -9,7 +9,7 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "Room" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
 
     CONSTRAINT "Room_pkey" PRIMARY KEY ("id")
@@ -17,8 +17,8 @@ CREATE TABLE "Room" (
 
 -- CreateTable
 CREATE TABLE "_RoomToUser" (
-    "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
+    "A" TEXT NOT NULL,
+    "B" TEXT NOT NULL
 );
 
 -- CreateIndex

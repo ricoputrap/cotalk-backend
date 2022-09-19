@@ -29,6 +29,10 @@ io.on("connection", (socket: Socket) => {
 
   SocketClient.setInstance(socket);
 
+  socket.on("join_room", (roomID: string) => {
+    socket.join(roomID);
+  })
+
   socket.on("send_message", (data: any) => {
     socket.to(data.room).emit("receive_message", data);
   });
