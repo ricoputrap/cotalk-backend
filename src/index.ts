@@ -31,7 +31,11 @@ io.on("connection", (socket: Socket) => {
 
   socket.on("join_room", (roomID: string) => {
     socket.join(roomID);
-  })
+  });
+
+  socket.on("join_rooms", (rooms: string[]) => {
+    socket.join(rooms);
+  });
 
   socket.on("send_message", (data: any) => {
     socket.to(data.room).emit("receive_message", data);
